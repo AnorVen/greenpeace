@@ -1,0 +1,126 @@
+.first {
+  width: 100%;
+  height: 100vh;
+  background-image url("../img/first.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  padding-top: 100px;
+  padding-left: 145px;
+  box-sizing border-box;
+  @media desktop-width {
+    background-size: cover;
+  }
+
+  .logo {
+    width: 220px;
+    img {
+      width: 100%;
+    }
+  }
+  &__title {
+    width: 545px;
+    font-size: 42px;
+    margin-top: 90px;
+  }
+  input {
+    font-size: 18px;
+    line-height: normal;
+    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+
+  }
+  .form {
+    width: 360px;
+    &__email {
+      width: 100%;
+      background-color: inherit;
+      border: 1px solid #fff;
+      font-size: 18px;
+      line-height: normal;
+      font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+      box-sizing border-box
+      padding 10px;
+      margin-top: 50px;
+    }
+    &__tel {
+      background-color: inherit;
+      border: 1px solid #fff;
+      font-size: 18px;
+      line-height: normal;
+      font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+      width: 58%;
+      padding 10px;
+      box-sizing border-box;
+      margin-top: 25px;
+
+    }
+    &__btn {
+      font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+      font-size: 18px;
+      line-height: normal;
+      border: none;
+      background-color: #64b523;
+      float: right;
+      width: 37%;
+      margin-top: 24px;
+      padding: 12px;
+
+    }
+    &__box {
+      width: 17px;
+      height: 17px;
+      background-color: inherit;
+      border: 1px solid #fff;
+
+    }
+    .input-check {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      cursor: pointer;
+      margin-top:20px;
+    }
+    .input-check input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -9px;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0;
+    }
+    .input-check label {
+      font-size: 15px;
+      margin-top: 10px;
+      line-height: 22px;
+      display: block;
+      padding-left: 40px;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .input-check label:before {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 35%;
+      width: 18px;
+      height: 18px;
+      margin-top: -9px;
+      background: rgba(0, 0, 0, 0) url(../img/check.png) no-repeat;
+      background-size: 18px 36px;
+      border: 1px solid #fff;
+      z-index: 5;
+      content: '';
+    }
+    .input-check input:checked + label:before {
+      background-position: 0 -18px;
+    }
+
+  }
+
+}
