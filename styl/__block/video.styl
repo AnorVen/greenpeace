@@ -1,0 +1,46 @@
+.preview {
+  .vidio__play {
+    animation: video_anim 3s;
+    animation-fill-mode: forwards;
+  }
+  .vidioItem__play {
+    animation: video_anim1 3s;
+    animation-fill-mode: forwards;
+  }
+  &.videoPreview__play {
+    animation: video_anim2 2s linear;
+    animation-fill-mode: forwards;
+  }
+  .vidioInner__play{
+    animation: video_anim3 2s linear;
+    animation-fill-mode: forwards;
+
+  }
+}
+
+@keyframes video_anim {
+  100% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+
+
+  }
+}
+
+@keyframes video_anim1 {
+  100% {
+    border-radius: 0;
+  }
+}
+@keyframes video_anim2 {
+  100% {
+    mix-blend-mode: normal;
+    background: #000;
+  }
+}
+@keyframes video_anim3 {
+  100% {
+    background: rgba(0,0,0,0);
+  }
+}

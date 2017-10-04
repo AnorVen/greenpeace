@@ -1,5 +1,4 @@
-
-$(document).ready(function(){
+$(document).ready(function () {
   $(".main").onepage_scroll({
     sectionContainer: "section",
     loop: true,
@@ -8,78 +7,64 @@ $(document).ready(function(){
 });
 
 
-
-
-
 $(function () {
-  var $moveable = $('.layer--movable'),
-    $player = $(".player"),
+  var $player = $(".player"),
     $playerItem = $(".player .item"),
     $previewInner = $(".preview__inner"),
     $overlay = $(".layer--overlay"),
     $video = $("#preview-video"),
     $wrap = $(".p-wrapper"),
-    $preview=$(".preview"),
+    $preview = $(".preview"),
+    $videoPlay = $(".item__play"),
+    t1= new TimelineMax(),
+    t3 = new TimelineMax(),
+    t4 = new TimelineMax();
 
-    t1 = new TimelineLite(),
-    t2 = new TimelineLite(),
-    t3 = new TimelineLite(),
-    t4 = new TimelineLite();
+  $videoPlay.on("mouseenter", function (date) {
+    console.log("enter")
+    $player.addClass("vidio__play");
+    $playerItem.addClass("vidioItem__play");
+    $preview.addClass("videoPreview__play");
+    $videoPlay.css({"background": "rgba(0,0,0,0)", "animation":"none",}).delay(2000);
+    $previewInner.addClass("vidioInner__play");
 
+    new TimelineMax($videoPlay,1,{
+        background : "rgba(0,0,0,0)",
+        animation : "none",
+        width : "100%",
+        height : "100%",
+        margin: "0",
+        ease: Power4.easeOut,
+      }, "-=2");
 
-
-  $player.on("mouseenter", function () {
-    t1
-      .to($player, 2, {
-        width: "100vh",
-        height: "100vh",
-        ease: Power2.easeOut,
-
-
-      } )
-      .to($player,1,{
-          width: "100vw",
-        }, "-=1",
-
-      )
-      .to($playerItem, 1, {
-        borderRadius: "0%",
-        ease: Power0.easeOut,
+  });
 
 
-      }, "-=1");
+  $videoPlay.on("mouseleave", function (date) {
 
-    t2
-      .to($wrap, 3, {
-        mixBlendMode: "normal",
-        ease: Power0.easeOut,
 
-      })
+      console.log("1")
+      $player.removeClass("vidio__play");
+      $playerItem.removeClass("vidioItem__play");
+      $preview.removeClass("videoPreview__play");
+      t1.reverse();
+    $previewInner.removeClass("vidioInner__play")
+
+
+
+
+
 
   })
 
 
-  $player.on("mouseleave", function () {
-    console.log("1")
-    t1.reverse();
-    t2.reverse();
-
-
-
-    /* new TimelineLite()
-
-      .from($player, 0.3, {
-        width: "45vh",
-        height: "45vh"
-      }, "-=0.2")*/
-  })
-
-
-  $player.on("click", function (e) {
+  $videoPlay.on("click", function (e) {
     e.preventDefault();
     $video[0].currentTime = 0;
-  //  $video.prop("muted", false);
+    //  $video.prop("muted", false);
     $preview.css("mix-blend-mode", "normal");
+
+
     t3
       .add("start")
       .to($playerItem, 1.2, {
@@ -87,28 +72,26 @@ $(function () {
         ease: Power4.easeOut
       }, "start")
       .to($previewInner, 0.8, {
-          autoAlpha: 0,
+        autoAlpha: 0,
         ease: Power4.easeOut
       }, "-=0.8")
-  })
+  });
+
+
   $video.on("click", function (e) {
     e.preventDefault();
     $wrap.css({"height": "100%"});
     $video.prop("muted", true);
     $video.css("margin-bottom", "0");
     $preview.css("mix-blend-mode", "multiply");
+
     t4
-    .to($playerItem, 0.2, {
-      autoAlpha: 1,
-    })
-    .to($previewInner, 0.2, {
+      .to($playerItem, 0.2, {
         autoAlpha: 1,
       })
-
-
-
-
-
+      .to($previewInner, 0.2, {
+        autoAlpha: 1,
+      })
 
 
   })
